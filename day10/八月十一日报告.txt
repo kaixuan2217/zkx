@@ -1,0 +1,55 @@
+八月十日 今日天气阴加暴雨
+上午八点十五开始期中考试
+第三节课在班级找错误
+
+下午讲课
+
+今日讲了redis
+ssm整合redis
+redis框架的搭建
+
+
+添加部门保存按钮
+将部门存储到redis里边即可
+找到pom.xml文件
+将两个缓存复制到当前项目的pom.xml里
+复制配置文件
+将properties后缀的复制进来
+还有一个spring
+将redis配置文件直接复制进来
+打开springcontext将
+value里边的名称换成redis-config.properties
+
+找到web.xml将
+applicationContext后边加上一个*
+
+
+在项目里边用redisempcontroller
+在service层写一个添加部门方法
+然后用
+@autowired
+private RedisTemplate redisTemplate
+然后在添加部门方法里写
+redisTemplate.boundHashOps("dlist").put("dept",dept.toString());
+
+然后在controller界面
+在查询页面
+调用redis
+@Autowired
+private REdisTemplate redisTemplate
+先查询redis
+将添加dept方法的回调对象dlist写进redis方法里
+List<Dept> dlist = (List<Dept>)dlistredisTemplate.boundHashOps("dlist").get("dept");
+判断
+if(Dlist == null){
+   Dlist = ss.findDeptList();
+   然后用redis方法存储数据
+   redisTemplate.boundHashOps("dlist").put("dept",dlist);
+}else{
+   输出从redis查询
+}
+启动redis
+然后添加部门开始查看redis
+
+自习课在班级写作业
+晚自习敲代码
